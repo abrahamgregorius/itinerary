@@ -42,7 +42,7 @@ const GiftReveal = () => {
 
   const handleOpenEnvelope = () => {
     setEnvelopeOpened(true)
-    setTimeout(() => setShowLetter(true), 1000)
+    setTimeout(() => setShowLetter(true), 300)
   }
 
   const handleShowVideo = () => {
@@ -84,7 +84,7 @@ const GiftReveal = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.1 }}
           >
             <motion.div
               className="text-5xl mb-4 cursor-pointer pixel-flicker"
@@ -95,7 +95,7 @@ const GiftReveal = () => {
                 rotate: [0, -2, 2, 0],
               }}
               transition={{
-                duration: 1,
+                duration: 2,
                 repeat: Infinity,
                 repeatType: "reverse"
               }}
@@ -115,7 +115,7 @@ const GiftReveal = () => {
             className="w-full max-w-sm"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.2 }}
           >
             <AnimatePresence>
               {showLetter && !showVideo && (
@@ -135,7 +135,7 @@ const GiftReveal = () => {
 
                   <motion.button
                     onClick={handleShowVideo}
-                    className="pixel-button py-3 px-6 text-xs !mt-5 block mx-auto"
+                    className="pixel-button py-3 px-6 text-xs mt-4 block mx-auto"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >

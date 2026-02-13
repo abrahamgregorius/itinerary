@@ -59,7 +59,7 @@ const LoveChallenge = () => {
       } else {
         // Quiz completed
         setQuizCompleted(true)
-        setTimeout(() => navigate('/gift-reveal'), 3000)
+        setTimeout(() => navigate('/gift-reveal'), 1500)
       }
     }, 2000)
   }
