@@ -95,7 +95,7 @@ const GiftReveal = () => {
                 rotate: [0, -2, 2, 0],
               }}
               transition={{
-                duration: 2,
+                duration: 1,
                 repeat: Infinity,
                 repeatType: "reverse"
               }}

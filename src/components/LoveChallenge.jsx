@@ -9,6 +9,7 @@ const LoveChallenge = () => {
   const [showFeedback, setShowFeedback] = useState(false)
   const [feedbackMessage, setFeedbackMessage] = useState('')
   const [isCorrect, setIsCorrect] = useState(false)
+  const [quizCompleted, setQuizCompleted] = useState(false)
 
   const questions = [
     {
@@ -57,7 +58,8 @@ const LoveChallenge = () => {
         setCurrentQuestion(prev => prev + 1)
       } else {
         // Quiz completed
-        setTimeout(() => navigate('/gift-reveal'), 2000)
+        setQuizCompleted(true)
+        setTimeout(() => navigate('/gift-reveal'), 3000)
       }
     }, 2000)
   }
@@ -91,7 +93,7 @@ const LoveChallenge = () => {
       </motion.div>
 
       <AnimatePresence mode="wait">
-        {!showFeedback ? (
+        {!showFeedback && !quizCompleted ? (
           <motion.div
             key="question"
             className="pixel-card p-6 w-full max-w-sm mb-8"
@@ -117,7 +119,7 @@ const LoveChallenge = () => {
               ))}
             </div>
           </motion.div>
-        ) : (
+        ) : showFeedback ? (
           <motion.div
             key="feedback"
             className="pixel-card p-6 w-full max-w-sm text-center mb-8"
@@ -158,10 +160,75 @@ const LoveChallenge = () => {
               </motion.div>
             )}
           </motion.div>
-        )}
+        ) : quizCompleted ? (
+          <motion.div
+            key="completed"
+            className="pixel-card p-6 w-full max-w-sm text-center mb-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+          >
+            <motion.div
+              className="text-4xl mb-4 pixel-flicker"
+              animate={{
+                scale: [1, 1.2, 1],
+                rotate: [0, 10, -10, 0]
+              }}
+              transition={{ duration: 1, repeat: Infinity }}
+            >
+              🎉
+            </motion.div>
+
+            <motion.h3
+              className="text-lg font-bold text-[#1a1a2e] pixel-glow mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              QUIZ COMPLETE! 💕
+            </motion.h3>
+
+            <motion.p
+              className="text-sm text-[#e94560] mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              Final Score: {score}/{questions.length}
+            </motion.p>
+
+            <motion.div
+              className="flex justify-center space-x-1 mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
+            >
+              {Array.from({ length: score }, (_, i) => (
+                <motion.span
+                  key={i}
+                  className="text-xl pixel-flicker"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.7 + i * 0.1 }}
+                >
+                  ♥
+                </motion.span>
+              ))}
+            </motion.div>
+
+            <motion.p
+              className="text-xs text-[#e94560] pixel-glow"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+            >
+              Preparing your special gift...
+            </motion.p>
+          </motion.div>
+        ) : null}
       </AnimatePresence>
 
-      {currentQuestion === questions.length - 1 && showFeedback && (
+      {quizCompleted && (
         <motion.div
           className="text-center"
           initial={{ opacity: 0 }}
