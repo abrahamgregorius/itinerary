@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+#root {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  min-height: 100vh;
+  font-family: 'Press Start 2P', monospace;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  /* Mobile-first viewport */
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', monospace;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: #e94560;
+  /* Mobile optimization */
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  #root {
+    font-size: 12px;
+  }
+}
+
+/* Enhanced pixel border with better contrast */
+.pixel-border {
+  border: 4px solid #e94560;
+  box-shadow:
+    inset 0 0 0 4px #fff,
+    0 0 0 8px #e94560,
+    inset 0 0 0 8px #fff,
+    0 8px 16px rgba(233, 69, 96, 0.3);
+  position: relative;
+}
+
+.pixel-border::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(45deg, #e94560, #f39c12, #f1c40f, #e94560);
+  background-size: 8px 8px;
+  z-index: -1;
+  border-radius: 4px;
+}
+
+/* Enhanced pixel button with better contrast */
+.pixel-button {
+  background: linear-gradient(135deg, #e94560 0%, #f39c12 50%, #f1c40f 100%);
+  border: 4px solid #e94560;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  box-shadow:
+    inset 0 0 0 3px #fff,
+    0 6px 0 #c0392b,
+    0 8px 16px rgba(233, 69, 96, 0.4);
+  transition: all 0.15s ease;
+  /* Mobile touch optimization */
+  min-height: 50px;
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  border-radius: 8px;
+  text-shadow: 2px 2px 0px #c0392b;
+}
+
+.pixel-button:hover {
+  background: linear-gradient(135deg, #f39c12 0%, #f1c40f 50%, #e94560 100%);
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 0 0 3px #fff,
+    0 8px 0 #c0392b,
+    0 12px 20px rgba(233, 69, 96, 0.5);
+}
+
+.pixel-button:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 0 0 3px #fff,
+    0 2px 0 #c0392b,
+    0 4px 8px rgba(233, 69, 96, 0.3);
+}
+
+/* Enhanced pixel card with better readability */
+.pixel-card {
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 50%, #e9ecef 100%);
+  border: 4px solid #e94560;
+  box-shadow:
+    inset 0 0 0 4px #1a1a2e,
+    0 8px 0 #c0392b,
+    0 12px 20px rgba(233, 69, 96, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Mobile spacing */
+  margin: 0 20px;
+  padding: 24px;
+  max-width: calc(100vw - 40px);
+  border-radius: 12px;
+  position: relative;
+}
+
+.pixel-card::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,249,250,0.8));
+  border-radius: 8px;
+  z-index: -1;
+}
+
+/* Cleaner retro background */
+.retro-bg {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.retro-bg::before {
+  content: "🎮💖🎵🎶";
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  font-size: 32px;
+  opacity: 0.05;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.retro-bg::after {
+  content: "💕🎮💓🎵";
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  font-size: 28px;
+  opacity: 0.03;
+  animation: float 10s ease-in-out infinite reverse;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(10deg); }
+}
+
+@keyframes pixel-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.pixel-flicker {
+  animation: pixel-flicker 2s infinite;
+}
+
+@keyframes pixel-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 8px #e94560,
+      0 0 16px #e94560,
+      0 0 24px #e94560,
+      2px 2px 0px #c0392b;
+  }
+  50% {
+    text-shadow:
+      0 0 12px #f39c12,
+      0 0 24px #f39c12,
+      0 0 36px #f39c12,
+      2px 2px 0px #c0392b;
+  }
+}
+
+.pixel-glow {
+  animation: pixel-glow 3s infinite;
+}
+
+/* Subtle CRT effect */
+.crt::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(233, 69, 96, 0.01),
+      rgba(233, 69, 96, 0.01) 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    radial-gradient(ellipse at center, rgba(233, 69, 96, 0.02) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 480px) {
+  .pixel-card {
+    margin: 0 16px;
+    padding: 20px;
+    max-width: calc(100vw - 32px);
+  }
+
+  .pixel-button {
+    font-size: 8px;
+    min-height: 44px;
+    padding: 10px 16px;
+    max-width: 280px;
+  }
+
+  .retro-bg {
+    background-size: 16px 16px;
+  }
+
+  .retro-bg::before,
+  .retro-bg::after {
+    font-size: 24px;
+  }
+}
