@@ -10,32 +10,32 @@ const MemoryQuest = () => {
   const memories = [
     {
       id: 1,
-      photo: '☕',
-      message: "Our first date at that cozy café... remember how the rain made everything so romantic? Every moment with you feels like coming home. 💕",
+      photo: '/1.jpeg',
+      message: "This moment was lovely... remember how the rain made everything so romantic? Every moment with you feels like coming home.",
       emoji: '💖'
     },
     {
       id: 2,
-      photo: '🏖️',
-      message: "That magical beach sunset where we watched the waves dance together. Your smile lit up brighter than the horizon. 🌅",
+      photo: '/2.jpeg',
+      message: "I love going places with you and being silly without thinking about your judgement because I know that you love me.",
       emoji: '💕'
     },
     {
       id: 3,
-      photo: '🎂',
-      message: "Your birthday surprise! Seeing your eyes light up made my heart skip a beat. You're my greatest joy. 🎉",
+      photo: '/3.jpeg',
+      message: "Your birthday surprise! Seeing your eyes light up made my heart skip a beat. You're my greatest joy.",
       emoji: '💗'
     },
     {
       id: 4,
-      photo: '💃',
-      message: "Dancing under the stars at the festival... you move with such grace, my love. That night was pure magic. ✨",
+      photo: '/4.jpeg',
+      message: "This picture was pure sweet. You're so beautiful at that moment and I want to eat you.",
       emoji: '💓'
     },
     {
       id: 5,
-      photo: '🏠',
-      message: "Our first home together. Every corner holds a memory of us, every wall echoes with our laughter and love. 🏡",
+      photo: '/5.jpeg',
+      message: "This screenshot is my favorite. It shows that you're comfortable and sleepy xixixi",
       emoji: '💘'
     }
   ]
@@ -123,7 +123,7 @@ const MemoryQuest = () => {
                   } : {}}
                   transition={{ duration: 0.6 }}
                 >
-                  {memory.photo}
+                  <img src={memory.photo} className="w-64 h-64 object-contain rounded-lg" alt="" />
                 </motion.div>
 
                 <AnimatePresence>
@@ -135,7 +135,7 @@ const MemoryQuest = () => {
                       exit={{ opacity: 0, y: -30 }}
                       transition={{ duration: 0.8 }}
                     >
-                      <p className="text-[#1a1a2e] font-bold text-xs leading-relaxed mb-3">
+                      <p className="text-white font-bold text-xs leading-relaxed mb-3 bg-black bg-opacity-70 px-3 py-2 rounded-lg">
                         {memory.message}
                       </p>
                       <div className="text-2xl pixel-glow">

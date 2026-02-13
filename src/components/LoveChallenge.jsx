@@ -13,10 +13,10 @@ const LoveChallenge = () => {
   const questions = [
     {
       question: "WHERE WAS OUR FIRST DATE?",
-      options: ["THAT COZY CAFE DOWNTOWN", "THE MOVIE THEATER", "A PICNIC IN THE PARK", "BOWLING ALLEY"],
+      options: ["BINTARO XCHANGE", "CENTRAL PARK", "YOUR HOME", "MILKY WAY GALAXY"],
       correct: 0,
-      correctMessage: "YES! THAT RAINY EVENING AT THE CAFE WAS PERFECT! ☕♥",
-      wrongMessage: "CLOSE, BUT IT WAS THAT COZY CAFE! TRY AGAIN! 😘"
+      correctMessage: "YES! THAT EVENING AT BXC WAS PERFECT! ☕♥",
+      wrongMessage: "CLOSE, BUT IT WAS AT BXC! TRY AGAIN! 😘"
     },
     {
       question: "WHAT'S MY FAVORITE COLOR ON YOU?",
@@ -27,10 +27,10 @@ const LoveChallenge = () => {
     },
     {
       question: "WHAT'S OUR SONG?",
-      options: ["PERFECT BY ED SHEERAN", "ALL OF ME BY JOHN LEGEND", "THINKING OUT LOUD", "AT LAST BY ETTA JAMES"],
+      options: ["LAST NIGHT ON EARTH - GREEN DAY", "NOTHING - BRUNO MAJOR", "I DONT LOVE YOU - MY CHEMICAL ROMANCE", "FANCY - TWICE"],
       correct: 1,
-      correctMessage: "YES! 'ALL OF ME' DESCRIBES HOW I FEEL ABOUT YOU! 🎵♥",
-      wrongMessage: "OUR SONG IS 'ALL OF ME' - IT FITS US PERFECTLY! 🎶"
+      correctMessage: "YES! 'NOTHING' REMINDS ME OF HOW I FEEL ABOUT YOU! 🎵♥",
+      wrongMessage: "OUR SONG IS 'NOTHING' - IT FITS US PERFECTLY! 🎶"
     },
     {
       question: "WHAT'S MY FAVORITE THING ABOUT YOU?",

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const GiftReveal = () => {
@@ -7,6 +7,38 @@ const GiftReveal = () => {
   const [envelopeOpened, setEnvelopeOpened] = useState(false)
   const [showLetter, setShowLetter] = useState(false)
   const [showVideo, setShowVideo] = useState(false)
+  const [countdown, setCountdown] = useState('')
+
+  // Target date: February 15, 2026 at 09:00
+  const targetDate = new Date('2026-02-15T09:00:00')
+
+  useEffect(() => {
+    const updateCountdown = () => {
+      const now = new Date()
+      const timeLeft = targetDate - now
+
+      if (timeLeft <= 0) {
+        setCountdown('IT\'S TIME! 💕')
+        return
+      }
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24))
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000)
+
+      if (days > 0) {
+        setCountdown(`${days} DAYS ${hours} HOURS ${minutes} MINUTES ${seconds} SECONDS`)
+      } else {
+        setCountdown(`${hours} HOURS ${minutes} MINUTES ${seconds} SECONDS`)
+      }
+    }
+
+    updateCountdown()
+    const interval = setInterval(updateCountdown, 1000)
+
+    return () => clearInterval(interval)
+  }, [targetDate])
 
   const handleOpenEnvelope = () => {
     setEnvelopeOpened(true)
@@ -20,16 +52,16 @@ const GiftReveal = () => {
   const loveLetter = `
     MY DEAREST LOVE,
 
-    AS I SIT HERE THINKING ABOUT YOU, MY HEART FILLS WITH SO MUCH JOY AND GRATITUDE. FROM THE MOMENT WE MET, I KNEW THERE WAS SOMETHING SPECIAL ABOUT YOU – THAT SPARK, THAT CONNECTION THAT MADE EVERYTHING ELSE FADE AWAY.
+    AS I SIT HERE THINKING ABOUT YOU, MY HEART FILLS WITH SO MUCH JOY AND GRATITUDE. FROM THE MOMENT WE MET, I KNEW THERE WAS SOMETHING SPECIAL ABOUT YOU, THAT SPARK, THAT CONNECTION THAT MADE EVERYTHING ELSE FADE AWAY.
 
     YOU'VE BROUGHT SO MUCH LIGHT INTO MY LIFE. YOUR SMILE LIGHTS UP MY DARKEST DAYS, YOUR LAUGH IS MY FAVORITE MELODY, AND YOUR LOVE IS MY GREATEST TREASURE. EVERY MOMENT WITH YOU FEELS LIKE A BEAUTIFUL ADVENTURE, AND I CAN'T WAIT TO CREATE MORE MEMORIES TOGETHER.
 
-    YOU ARE MY EVERYTHING – MY BEST FRIEND, MY CONFIDANT, MY PARTNER IN CRIME, AND THE LOVE OF MY LIFE. I PROMISE TO ALWAYS CHERISH YOU, SUPPORT YOU, AND LOVE YOU WITH ALL THAT I AM.
+    YOU ARE MY EVERYTHING. MY BEST FRIEND, MY CONFIDANT, MY PARTNER IN CRIME, AND THE LOVE OF MY LIFE. I PROMISE TO ALWAYS CHERISH YOU, SUPPORT YOU, AND LOVE YOU WITH ALL THAT I AM.
 
-    HAPPY VALENTINE'S DAY, MY LOVE. HERE'S TO MANY MORE BEAUTIFUL MOMENTS TOGETHER.
+    HAPPY BIRTHDAY VALENTINE'S DAY, MY LOVE. HERE'S TO MANY MORE BEAUTIFUL MOMENTS TOGETHER.
 
     FOREVER YOURS,
-    YOUR VALENTINE ♥
+    bram ♥
   `
 
   return (
@@ -103,7 +135,7 @@ const GiftReveal = () => {
 
                   <motion.button
                     onClick={handleShowVideo}
-                    className="pixel-button py-3 px-6 text-xs mt-6 block mx-auto"
+                    className="pixel-button py-3 px-6 text-xs !mt-5 block mx-auto"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -125,23 +157,26 @@ const GiftReveal = () => {
                   </div>
 
                   <div className="pixel-border bg-[#e94560] p-6 text-center mb-6">
-                    <p className="text-[#f39c12] mb-3 text-xs">VIDEO PLACEHOLDER - IN A REAL APP, EMBED YOUR VIDEO HERE</p>
-                    <div className="w-full h-40 pixel-border bg-gradient-to-br from-[#e94560] to-[#f39c12] flex items-center justify-center">
-                      <span className="text-3xl pixel-flicker">🎬</span>
-                    </div>
+                    <video
+                      className="w-full h-100 pixel-border rounded-lg object-cover"
+                      controls
+                      preload="metadata"
+                    >
+                      <source src="/video.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
                   </div>
 
                   <div className="text-center space-y-4">
                     <div className="pixel-border pixel-card p-4">
                       <h4 className="font-bold text-[#1a1a2e] mb-2 text-xs">🎟️ YOUR DIGITAL VOUCHER</h4>
-                      <p className="text-[#e94560] text-xs">A SPECIAL DINNER DATE TONIGHT AT 7 PM! CAN'T WAIT TO SEE YOU! 🕖</p>
+                      <p className="text-[#e94560] text-xs">SPECIAL DATE TOMORROW STARTING AT 9 AM!</p>
                     </div>
 
                     <div className="pixel-border pixel-card p-4">
                       <h4 className="font-bold text-[#1a1a2e] mb-2 text-xs">⏰ COUNTDOWN TO OUR DATE</h4>
                       <div className="text-xs font-mono text-[#e94560] pixel-glow">
-                        {/* In a real app, implement actual countdown */}
-                        5 HOURS 23 MINUTES 45 SECONDS
+                        {countdown}
                       </div>
                     </div>
                   </div>
@@ -149,7 +184,7 @@ const GiftReveal = () => {
               )}
             </AnimatePresence>
 
-            <div className="flex flex-col gap-4 justify-center">
+            <div className="flex flex-col gap-4 justify-center mt-5">
               <motion.button
                 onClick={() => navigate('/')}
                 className="pixel-button py-3 px-6 text-xs"
@@ -159,23 +194,6 @@ const GiftReveal = () => {
                 REPLAY THE ADVENTURE 🔄
               </motion.button>
 
-              <motion.button
-                onClick={() => alert('DOWNLOAD FEATURE WOULD BE IMPLEMENTED HERE! 💾')}
-                className="pixel-button py-3 px-6 text-xs"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                DOWNLOAD KEEPSAKE 📥
-              </motion.button>
-
-              <motion.button
-                onClick={() => alert('SHARE FEATURE WOULD BE IMPLEMENTED HERE! 📤')}
-                className="pixel-button py-3 px-6 text-xs"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                SHARE OUR LOVE ♥
-              </motion.button>
             </div>
           </motion.div>
         )}

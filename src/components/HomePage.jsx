@@ -13,7 +13,7 @@ const HomePage = ({ musicEnabled, setMusicEnabled }) => {
 
   const handleSecretSubmit = (e) => {
     e.preventDefault()
-    if (secretCode === '0214' || secretCode === '02/14') {
+    if (secretCode === '1111' || secretCode === '11/11') {
       navigate('/gift-reveal')
     } else {
       alert('💕 Not quite right, my love! Try our special date 💕')
@@ -71,7 +71,7 @@ const HomePage = ({ musicEnabled, setMusicEnabled }) => {
   return (
     <div className="flex flex-col items-center justify-center px-4 py-8 min-h-screen relative overflow-hidden w-full">
       {floatingHearts}
-      {floatingFlowers}
+      {/* {floatingFlowers} */}
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -85,7 +85,7 @@ const HomePage = ({ musicEnabled, setMusicEnabled }) => {
           animate={{ scale: 1 }}
           transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
         >
-          <motion.div
+          {/* <motion.div
             className="text-6xl mb-6"
             animate={{
               scale: [1, 1.1, 1],
@@ -98,7 +98,7 @@ const HomePage = ({ musicEnabled, setMusicEnabled }) => {
             }}
           >
             💕
-          </motion.div>
+          </motion.div> */}
 
           <motion.h1
             className="text-lg sm:text-xl font-bold text-[#1a1a2e] pixel-glow mb-6"
@@ -106,7 +106,7 @@ const HomePage = ({ musicEnabled, setMusicEnabled }) => {
             animate={{ scale: 1 }}
             transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
           >
-            HI LOVE, I MADE SOMETHING FOR YOU ♥
+            HI JESSICA, THIS IS FOR YOU ♥
           </motion.h1>
 
           <motion.p
@@ -132,24 +132,24 @@ const HomePage = ({ musicEnabled, setMusicEnabled }) => {
             START THE ADVENTURE
           </motion.button>
 
-          <motion.button
+          {/* <motion.button
             onClick={() => setMusicEnabled(!musicEnabled)}
             className="pixel-button mb-4 text-xs"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             {musicEnabled ? '♪ MUSIC ON ♪' : '🔇 MUSIC OFF'}
-          </motion.button>
+          </motion.button> */}
         </motion.div>
 
-        <motion.button
+        {/* <motion.button
           onClick={() => setShowSecret(!showSecret)}
           className="pixel-button text-xs"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           SECRET ACCESS
-        </motion.button>
+        </motion.button> */}
 
         {showSecret && (
           <motion.form
